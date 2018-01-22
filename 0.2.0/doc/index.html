@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="theme/face/face.css">
+<meta name="keywords" content="">
+<meta name="description" content="文档">
+<title>文档</title>
+</head>
+<body>
+<div class="face-one-head">
+    <a class="face-one-head-logo" href="../index.html">
+        <img src="theme/media/logo.svg" alt="" class="face-one-head-logo-photo" />
+        face
+    </a>
+    <span class="face-one-head-slogan">
+        Write less code, do more things!
+    </span>
+    <!-- <div class="face-one-head-search">
+        <span class="face-one-head-search-icon fi fi-search"></span>
+        <input type="text" class="face-one-head-search-input" placeholder="搜索..." />
+    </div> -->
+    <div class="face-one-head-nav">
+        <span class="face-one-head-nav-switch fi fi-bars"></span>
+        <div class="face-one-head-nav-F-cnt">
+            <a href="../index.html" class="face-one-head-nav-link">首页</a>
+            <a href="intro.html" class="face-one-head-nav-link">指引</a>
+            <a href="index.html" class="face-one-head-nav-link">文档</a>
+        </div>
+        <script>
+        Array.from(document.querySelectorAll('.face-one-head-nav-link')).forEach(function (node) {
+            if (node.href) {
+                var pathname = node.href.replace(/\?.*/, '')
+                if (pathname === location.origin + location.pathname) {
+                    node.setAttribute('class', node.getAttribute('class') + ' ' + 'face-one-head-nav-link--on')
+                }
+            }
+        })
+        </script>
+    </div>
+</div>
+
+<div class="face-one-layout">
+<div class="face-one-layout-F-line">
+<div class="face-one-layout-sidebar">
+<div class="face-one-nav">
+<span class="face-one-nav-switch fi fi-angle-double-right"></span>
+<div class="face-one-nav-F-inner">
+<div class="face-one-nav-item face-one-nav-item--on">
+    <a href="intro.html" class="face-one-nav-item-label">指引</a>
+</div>
+<!-- face-one-nav-item--group-on 控制默认展开 -->
+<div class="face-one-nav-item face-one-nav-item--group face-one-nav-item--group-on">
+    <span class="face-one-nav-item-switch fi fi-angle-down"></span>
+    <span class="face-one-nav-item-label">
+        文档
+    </span>
+    <div class="face-one-nav-item-group">
+        <div class="face-one-nav-item-group-title">示例</div>
+        <a href="index.html#基础" class="face-one-nav-item-group-item">基础</a>        
+    </div>
+    <!--
+    <div class="face-one-nav-item-group">
+        <div class="face-one-nav-item-group-title">自定义界面</div>
+        <a href="index.html#less" class="face-one-nav-item-group-item">less</a>
+    </div> -->
+</div>
+
+</div>
+</div>
+</div>
+<div class="face-one-layout-cnt">
+<div id="face-one-cnt" class="face-one-cnt markdown-body">
+<div id="face-one-sidebar" class="face-one-sidebar"></div>
+<h1 id="文档" ><a class="markrun-anchor" href="../Users/nimo/Documents/git/motion-logic/#文档"><span class="markrun-anchor-link"></span></a>文档</h1><h2 id="示例" ><a class="markrun-anchor" href="../Users/nimo/Documents/git/motion-logic/#示例"><span class="markrun-anchor-link"></span></a>示例</h2>
+    <div class="face-one-code  face-one-code--open">
+                        <div class="face-one-code-example">
+                            <div id="basic-demo" ></div>
+                        </div>
+                        <div class="face-one-code-info">
+                            <div class="face-one-code-info-title">常规动画</div>
+                            <div class="face-one-code-info-desc">
+                                <p><code>effect</code> 参数在 <a href="http://easings.net/">http://easings.net/</a> 中查询</p>
+                            </div>
+                            <span class="face-one-code-info-switchCode fi fi-code"></span>
+                        </div>
+                        <div class="face-one-code-source">
+                            <div class="face-one-code-source-tool">
+                                <span class="face-one-code-source-tool-copy fi fi-files-o"></span>
+                            </div>
+                            <pre><code class="lang-js">import React , { Component } from <span class="hljs-string">"react"</span>
+import MotionLogic from <span class="hljs-string">"motion-logic"</span>
+
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Basic</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+    constructor (props) {
+        super(props)
+        <span class="hljs-keyword">const</span> <span class="hljs-keyword">self</span> = this
+        <span class="hljs-keyword">self</span>.state = {
+            offset: <span class="hljs-number">0</span>
+        }
+    }
+    render() {
+        <span class="hljs-keyword">const</span> <span class="hljs-keyword">self</span> = this
+        <span class="hljs-keyword">return</span> (
+            &lt;div&gt;
+                &lt;div style={{
+                    width: <span class="hljs-number">100</span>,
+                    height: <span class="hljs-number">100</span>,
+                    overflow: <span class="hljs-string">'hidden'</span>
+                }}&gt;
+                    &lt;div style={{
+                        width: <span class="hljs-number">100</span>,
+                        marginTop: <span class="hljs-number">50</span>,
+                        height:<span class="hljs-number">0</span>,
+                        overflow: <span class="hljs-string">'hidden'</span>,
+                        borderTop: <span class="hljs-string">'1px solid blue'</span>,
+                        borderLeft:<span class="hljs-string">' 10px solid red'</span>,
+                        transform: <span class="hljs-string">'rotate('</span> + <span class="hljs-keyword">self</span>.state.offset % <span class="hljs-number">360</span> + <span class="hljs-string">'deg) translate3d(0,0,0)'</span>
+                    }} &gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;hr/&gt;
+                &lt;div
+                    style={{
+                        width:<span class="hljs-number">100</span>,
+                        height:<span class="hljs-number">100</span>,
+                        background: <span class="hljs-string">'skyblue'</span>,
+                        marginLeft: <span class="hljs-keyword">self</span>.state.offset
+                    }}
+                &gt;&lt;/div&gt;
+                &lt;button
+                    onClick={<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                        <span class="hljs-keyword">var</span> motion = <span class="hljs-keyword">new</span> MotionLogic({
+                            value: <span class="hljs-number">180</span>,
+                            duration: <span class="hljs-number">1000</span>,
+                            onAction: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(mount)</span> </span>{
+                                <span class="hljs-keyword">var</span> offset = <span class="hljs-keyword">self</span>.state.offset
+                                <span class="hljs-keyword">self</span>.setState({
+                                    offset: offset + mount
+                                })
+                            }
+                        })
+                        motion.run()
+                    }}
+                &gt;
+                    linear
+                &lt;/button&gt;
+
+                &lt;button
+                    onClick={<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                        <span class="hljs-keyword">var</span> motion = <span class="hljs-keyword">new</span> MotionLogic({
+                            effect: <span class="hljs-string">'easeOutElastic'</span>,
+                            value: <span class="hljs-number">180</span>,
+                            duration: <span class="hljs-number">1000</span>,
+                            onAction: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(mount)</span> </span>{
+                                <span class="hljs-keyword">var</span> offset = <span class="hljs-keyword">self</span>.state.offset
+                                <span class="hljs-keyword">self</span>.setState({
+                                    offset: offset + mount
+                                })
+                            }
+                        })
+                        motion.run()
+                    }}
+                &gt;
+                    easeOutElastic
+                &lt;/button&gt;
+
+                &lt;button
+                    onClick={<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                        <span class="hljs-keyword">var</span> motion = <span class="hljs-keyword">new</span> MotionLogic({
+                            effect: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">easeInOutBounce</span> <span class="hljs-params">(t, b, c, d)</span> </span>{
+                                <span class="hljs-keyword">if</span> (t &lt; d/<span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> this.easeInBounce (t*<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, c, d) * <span class="hljs-number">.5</span> + b;
+                                <span class="hljs-keyword">return</span> this.easeOutBounce (t*<span class="hljs-number">2</span>-d, <span class="hljs-number">0</span>, c, d) * <span class="hljs-number">.5</span> + c*<span class="hljs-number">.5</span> + b;
+                            },
+                            value: <span class="hljs-number">180</span>,
+                            duration: <span class="hljs-number">1000</span>,
+                            onAction: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(mount)</span> </span>{
+                                <span class="hljs-keyword">var</span> offset = <span class="hljs-keyword">self</span>.state.offset
+                                <span class="hljs-keyword">self</span>.setState({
+                                    offset: offset + mount
+                                })
+                            }
+                        })
+                        motion.run()
+                    }}
+                &gt;
+                    <span class="hljs-function"><span class="hljs-keyword">function</span>
+                &lt;/<span class="hljs-title">button</span>&gt;
+
+                &lt;<span class="hljs-title">button</span>
+                    <span class="hljs-title">onClick</span>=</span>{<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                        <span class="hljs-keyword">var</span> motion = <span class="hljs-keyword">new</span> MotionLogic({
+                            value: <span class="hljs-number">180</span>,
+                            startSpeed: <span class="hljs-number">0.1</span>,
+                            endSpeed: <span class="hljs-number">0</span>,
+                            onAction: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(mount)</span> </span>{
+                                <span class="hljs-keyword">var</span> offset = <span class="hljs-keyword">self</span>.state.offset
+                                <span class="hljs-keyword">self</span>.setState({
+                                    offset: offset + mount
+                                })
+                            }
+                        })
+                        motion.run()
+                    }}
+                &gt;
+                    speed
+                &lt;/button&gt;
+                &lt;button
+                    onClick={<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                        <span class="hljs-keyword">var</span> motion = <span class="hljs-keyword">new</span> MotionLogic({
+                            value: Number.MAX_SAFE_INTEGER,
+                            startSpeed: <span class="hljs-number">0.1</span>,
+                            endSpeed: <span class="hljs-number">0.1</span>,
+                            onAction: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(mount)</span> </span>{
+                                <span class="hljs-keyword">var</span> offset = <span class="hljs-keyword">self</span>.state.offset
+                                <span class="hljs-keyword">self</span>.setState({
+                                    offset: offset + mount
+                                })
+                            },
+                            onStop: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                                console.log(<span class="hljs-string">'stop'</span>)
+                            }
+                        })
+                        motion.run()
+                        setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                            motion.stop()
+                        }, <span class="hljs-number">1000</span>)
+                    }}
+                &gt;
+                    keep runing <span class="hljs-number">1000</span>ms
+                &lt;/button&gt;
+                &lt;button
+                    onClick={<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                        <span class="hljs-keyword">var</span> speedUp, uniform, slowDown
+                        speedUp = <span class="hljs-keyword">new</span> MotionLogic({
+                            value: <span class="hljs-number">360</span>,
+                            startSpeed: <span class="hljs-number">0</span>,
+                            endSpeed: <span class="hljs-number">0.5</span>,
+                            onAction: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(mount)</span> </span>{
+                                <span class="hljs-keyword">var</span> offset = <span class="hljs-keyword">self</span>.state.offset
+                                <span class="hljs-keyword">self</span>.setState({
+                                    offset: offset + mount
+                                })
+                            },
+                            onDone: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                                uniform.run()
+                                setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                                    uniform.stop()
+                                    <span class="hljs-keyword">var</span> target = <span class="hljs-number">90</span>
+                                    <span class="hljs-comment">// target = 360 - target // 如果箭头指向右边，则去掉此行注释</span>
+                                    <span class="hljs-keyword">var</span> currentDeg = <span class="hljs-keyword">self</span>.state.offset % <span class="hljs-number">360</span>
+                                    <span class="hljs-comment">// 加上 360 * 2 是因为 currentDeg 如果跟 target 很小，会变成快速指向目标</span>
+                                    <span class="hljs-keyword">var</span> mountDeg = <span class="hljs-number">360</span> * <span class="hljs-number">2</span> + target - currentDeg
+                                    <span class="hljs-keyword">var</span> slowDown = <span class="hljs-keyword">new</span> MotionLogic({
+                                        value: mountDeg,
+                                        startSpeed: <span class="hljs-number">0.5</span>,
+                                        endSpeed: <span class="hljs-number">0</span>,
+                                        onAction: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(mount)</span> </span>{
+                                            <span class="hljs-keyword">var</span> offset = <span class="hljs-keyword">self</span>.state.offset
+                                            <span class="hljs-keyword">self</span>.setState({
+                                                offset: offset + mount
+                                            })
+                                        },
+                                        onDone: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                                            console.log(<span class="hljs-string">'over'</span>)
+                                        }
+                                    })
+                                    slowDown.run()
+                                }, <span class="hljs-number">2000</span>)
+                            }
+                        })
+                        speedUp.run()
+
+                        uniform = <span class="hljs-keyword">new</span> MotionLogic({
+                            value: Number.MAX_SAFE_INTEGER,
+                            startSpeed: <span class="hljs-number">0.5</span>,
+                            endSpeed: <span class="hljs-number">0.5</span>,
+                            onAction: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(mount)</span> </span>{
+                                <span class="hljs-keyword">var</span> offset = <span class="hljs-keyword">self</span>.state.offset
+                                <span class="hljs-keyword">self</span>.setState({
+                                    offset: offset + mount
+                                })
+                            }
+                        })
+
+                    }}
+
+                &gt;
+                    turntable
+                &lt;/button&gt;
+
+            &lt;/div&gt;
+        )
+    }
+}
+Basic = <span class="hljs-keyword">require</span>(<span class="hljs-string">'react-hot-loader'</span>).hot(module)(Basic)
+export <span class="hljs-keyword">default</span> Basic
+</code></pre>
+                        </div>
+                        
+                    </div></div>
+</div>
+</div>
+</div>
+<script>
+Array.from(document.querySelectorAll('.face-one-nav-item-label')).forEach(function (node) {
+    if (node.href) {
+        var pathname = node.href.replace(/\?.*/, '')
+        if (pathname === location.origin + location.pathname + location.hash) {
+            node.setAttribute('class', node.getAttribute('class') + ' ' + 'face-one-nav-item-label--on')
+        }
+    }
+})
+var faceOneGetParent = function faceOneGetParent (el, className) {
+   if (el.parentNode.nodeName.toLowerCase() === 'html') {
+       return null
+   }
+   var parentClassName = el.parentNode.getAttribute('class')
+   var classNames = ''
+   if (parentClassName) {
+       classNames = parentClassName.split(' ')
+   }
+   if (classNames.indexOf(className) !== -1) {
+       return el.parentNode
+   }
+   else {
+       return faceOneGetParent(el.parentNode, className)
+   }
+}
+Array.from(document.querySelectorAll('.face-one-nav-item-group-item')).forEach(function (node) {
+    addAvativeClass(node)
+    function addAvativeClass (node)  {
+        if (node.href) {
+            var pathname = node.href.replace(/\?.*/, '')
+            if (pathname === location.origin + location.pathname + location.hash) {
+                node.setAttribute('class', node.getAttribute('class') + ' ' + 'face-one-nav-item-group-item--on')
+                var parentNode = faceOneGetParent(node, 'face-one-nav-item--group')
+                if (parentNode) {
+                    parentNode.setAttribute('class', parentNode.getAttribute('class') + ' ' + 'face-one-nav-item--group-on')
+                }
+            }
+        }
+    }
+
+})
+</script>
+<div class="face-one-foot">
+    <div class="face-one-foot-F-inner">
+        <div class="face-one-foot-group">
+            <div class="face-one-foot-group-title">
+                <span class="face-one-foot-group-title-icon fi fi-github"></span>
+                Github
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://github.com/onface/motion-logic" class="face-one-foot-group-item-link">face.react</a>
+                - 项目源码
+            </div>
+        </div>
+        <div class="face-one-foot-group">
+            <div class="face-one-foot-group-title">
+                <span class="face-one-foot-group-title-icon fi fi-link"></span>
+                相关站点
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://github.com/onface/module" class="face-one-foot-group-item-link">react</a>
+                - 开源项目脚手架
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="http://onface.cc/" class="face-one-foot-group-item-link">onface.cc</a>
+                - 资源集合
+            </div>
+        </div>
+        <div class="face-one-foot-group">
+            <div class="face-one-foot-group-title">
+                <span class="face-one-foot-group-title-icon fi fi-users"></span>
+                社区
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://github.com/onface/motion-logic/issues" class="face-one-foot-group-item-link">Github issues</a>
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://github.com/onface/motion-logic/issues/new" class="face-one-foot-group-item-link">提交bug</a>
+            </div>
+        </div>
+        <div class="face-one-foot-copyright">
+            <a href="../index.html" class="face-one-foot-copyright-title">
+                <img src="theme/media/logo.svg" class="face-one-foot-copyright-title-logo" />
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="theme/jquery.js"></script>
+<script>delete window.$</script>
+<script src="theme/face/face.js" ></script>
+<script data-markrun-lastrun="true">
+                        document.write('<scri' + 'pt src="./basic.demo.js?v=0.2.0"' + '" ></sc' + 'ript>')
+                        </script></body>
+</html>
