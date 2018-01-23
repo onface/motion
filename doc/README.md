@@ -7,7 +7,7 @@
 {
     title: '常规动画',
     desc: '`effect` 参数在 http://easings.net/ 中查询',
-    html: '<div id="basic-demo" ></div>',
+    html: '<div id="motion-demo" ></div>',
     js: './Motion.demo.js',
     source: './Motion.js',
     open: true
