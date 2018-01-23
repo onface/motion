@@ -1,7 +1,7 @@
 {
     "name": "motion-logic",
     "main": "lib/index.js",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "keywords": "",
     "scripts": {
         "dev": "rm -rf output && fis3 release -w -d ./output -r ./ -f compile/fis-conf.js",

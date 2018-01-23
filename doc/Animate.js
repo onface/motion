@@ -8,8 +8,9 @@ class Demo extends Component {
             x:0,
             y: 0,
             deg: 0,
-            rgb: [148,166,255],
-            targetRgb: [255,226,19]
+            r: 148,
+            g: 166,
+            b: 255
         }
     }
     render() {
@@ -19,75 +20,53 @@ class Demo extends Component {
                 <div style={{
                     width: 100,
                     height: 100,
-                    background: `rgb(${self.state.rgb.map(function(value){ return parseInt(value)}).join(',')})`,
+                    background: `rgb(${self.state.r},${self.state.g},${self.state.b})`,
                     position: 'relative',
+                    zIndex: 2,
                     left: self.state.x,
                     top: self.state.y,
                     transform: 'rotate(' + self.state.deg % 360 + 'deg) translate3d(0,0,0)',
                 }} ></div>
                 <button
                     onClick={function () {
-                        var animateX = new MotionLogic({
-                            value: 100,
+                        var motion = MotionLogic.animate({
                             duration: 500,
                             effect: 'easeOutElastic',
-                            onAction: function (mount) {
-                                self.setState({
-                                    x: self.state.x + mount
-                                })
+                            onAction: function (mountData) {
+                                self.setState(
+                                    MotionLogic.mount(
+                                        self.state,
+                                        mountData
+                                    )
+                                )
+                            },
+                            value: {
+                                x: {
+                                    effect: 'linear',
+                                    value: 200,
+                                },
+                                y: 30,
+                                deg: 360,
+                                // rgb must be a integer
+                                r: {
+                                    effect: 'linear',
+                                    integer: true,
+                                    value: 215 - self.state.r
+                                },
+                                g: {
+                                    effect: 'linear',
+                                    integer: true,
+                                    value: 58 - self.state.g
+                                },
+                                b: {
+                                    effect: 'linear',
+                                    integer: true,
+                                    value: 73 - self.state.b
+                                },
                             }
                         })
-                        animateX.run()
-                        var animateY = new MotionLogic({
-                            value: -30,
-                            duration: 500,
-                            effect: 'easeOutElastic',
-                            onAction: function (mount) {
-                                self.setState({
-                                    y: self.state.y + mount
-                                })
-                            }
-                        })
-                        animateY.run()
-                        var animateDeg = new MotionLogic({
-                            value: 360,
-                            duration: 500,
-                            effect: 'easeOutElastic',
-                            onAction: function (mount) {
-                                self.setState({
-                                    deg: self.state.deg + mount
-                                })
-                            }
-                        })
-                        animateDeg.run()
-                        new MotionLogic({
-                            value: self.state.targetRgb[0] - self.state.rgb[0],
-                            duration: 500,
-                            onAction: function (mount) {
-                                let state = self.state
-                                state.rgb[0] = state.rgb[0] + mount
-                                self.setState(state)
-                            }
-                        }).run()
-                        new MotionLogic({
-                            value: self.state.targetRgb[1] - self.state.rgb[1],
-                            duration: 500,
-                            onAction: function (mount) {
-                                let state = self.state
-                                state.rgb[1] = state.rgb[1] + mount
-                                self.setState(state)
-                            }
-                        }).run()
-                        new MotionLogic({
-                            value: self.state.targetRgb[2] - self.state.rgb[2],
-                            duration: 500,
-                            onAction: function (mount) {
-                                let state = self.state
-                                state.rgb[2] = state.rgb[2] + mount
-                                self.setState(state)
-                            }
-                        }).run()
-
+                        motion.run()
+                        console.log('motion', motion)
                     }}
                 >animate</button>
             </div>
