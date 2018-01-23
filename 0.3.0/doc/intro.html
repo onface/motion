@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="theme/face/face.css">
+<meta name="keywords" content="">
+<meta name="description" content="指引">
+<title>指引</title>
+</head>
+<body>
+<div class="face-one-head">
+    <a class="face-one-head-logo" href="../index.html">
+        <img src="theme/media/logo.svg" alt="" class="face-one-head-logo-photo" />
+        face
+    </a>
+    <span class="face-one-head-slogan">
+        Write less code, do more things!
+    </span>
+    <!-- <div class="face-one-head-search">
+        <span class="face-one-head-search-icon fi fi-search"></span>
+        <input type="text" class="face-one-head-search-input" placeholder="搜索..." />
+    </div> -->
+    <div class="face-one-head-nav">
+        <span class="face-one-head-nav-switch fi fi-bars"></span>
+        <div class="face-one-head-nav-F-cnt">
+            <a href="../index.html" class="face-one-head-nav-link">首页</a>
+            <a href="intro.html" class="face-one-head-nav-link">指引</a>
+            <a href="index.html" class="face-one-head-nav-link">文档</a>
+        </div>
+        <script>
+        Array.from(document.querySelectorAll('.face-one-head-nav-link')).forEach(function (node) {
+            if (node.href) {
+                var pathname = node.href.replace(/\?.*/, '')
+                if (pathname === location.origin + location.pathname) {
+                    node.setAttribute('class', node.getAttribute('class') + ' ' + 'face-one-head-nav-link--on')
+                }
+            }
+        })
+        </script>
+    </div>
+</div>
+
+<div class="face-one-layout">
+<div class="face-one-layout-F-line">
+<div class="face-one-layout-sidebar">
+<div class="face-one-nav">
+<span class="face-one-nav-switch fi fi-angle-double-right"></span>
+<div class="face-one-nav-F-inner">
+<div class="face-one-nav-item face-one-nav-item--on">
+    <a href="intro.html" class="face-one-nav-item-label">指引</a>
+</div>
+<!-- face-one-nav-item--group-on 控制默认展开 -->
+<div class="face-one-nav-item face-one-nav-item--group face-one-nav-item--group-on">
+    <span class="face-one-nav-item-switch fi fi-angle-down"></span>
+    <span class="face-one-nav-item-label">
+        文档
+    </span>
+    <div class="face-one-nav-item-group">
+        <div class="face-one-nav-item-group-title">示例</div>
+        <a href="index.html#基础" class="face-one-nav-item-group-item">基础</a>        
+    </div>
+    <!--
+    <div class="face-one-nav-item-group">
+        <div class="face-one-nav-item-group-title">自定义界面</div>
+        <a href="index.html#less" class="face-one-nav-item-group-item">less</a>
+    </div> -->
+</div>
+
+</div>
+</div>
+</div>
+<div class="face-one-layout-cnt">
+<div id="face-one-cnt" class="face-one-cnt markdown-body">
+<div id="face-one-sidebar" class="face-one-sidebar"></div>
+<h1 id="指引" ><a class="markrun-anchor" href="../Users/nimo/Documents/git/motion-logic/#指引"><span class="markrun-anchor-link"></span></a>指引</h1><blockquote>
+<p>使用一个组件或模块之前，应当知道它能解决的问题是什么，不能解决的问题是什么。使用的最佳实践是什么？</p>
+<p>接口设计和实现思路</p>
+</blockquote>
+<p>常规动画主要需要以下参数</p>
+<pre><code><span class="hljs-bullet">1. </span>duration 时间
+<span class="hljs-bullet">2. </span>value 距离
+</code></pre><blockquote>
+<p>精确控制时间和距离的动画</p>
+</blockquote>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> motion = <span class="hljs-keyword">new</span> Motion({
+    <span class="hljs-attr">duration</span>: <span class="hljs-number">1000</span>,
+    <span class="hljs-attr">value</span>: <span class="hljs-number">360</span>,
+    <span class="hljs-attr">onAction</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onAction</span> (<span class="hljs-params">mount</span>) </span>{ <span class="hljs-built_in">console</span>.log(mount) }
+})
+motion.run()
+<span class="hljs-comment">// 匀速运行时则速度是 0.36</span>
+<span class="hljs-comment">// 先快再慢的速度是先大于 0.36  然后小于 0.36</span>
+</code></pre>
+<p>加/减速度动画需要以下参数</p>
+<pre><code class="lang-markdown"><span class="hljs-bullet">1. </span>value 距离
+<span class="hljs-bullet">2. </span>startSpeed 起始速度
+<span class="hljs-bullet">3. </span>endSpeed 结束速度
+</code></pre>
+<blockquote>
+<p>精确控制速度和距离的动画</p>
+</blockquote>
+<pre><code class="lang-js"><span class="hljs-comment">// 加速</span>
+<span class="hljs-keyword">var</span> motion = <span class="hljs-keyword">new</span> Motion({
+    <span class="hljs-attr">value</span>: <span class="hljs-number">180</span>,
+    <span class="hljs-attr">startSpeed</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">endSpeed</span>: <span class="hljs-number">0.1</span>,
+    <span class="hljs-attr">onAction</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onAction</span> (<span class="hljs-params">mount</span>) </span>{ <span class="hljs-built_in">console</span>.log(mount) }
+})
+motion.run()
+<span class="hljs-comment">// 减速</span>
+<span class="hljs-keyword">var</span> motion = <span class="hljs-keyword">new</span> Motion({
+    <span class="hljs-attr">value</span>: <span class="hljs-number">180</span>,
+    <span class="hljs-attr">startSpeed</span>: <span class="hljs-number">0.1</span>,
+    <span class="hljs-attr">endSpeed</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">onAction</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onAction</span> (<span class="hljs-params">mount</span>) </span>{ <span class="hljs-built_in">console</span>.log(mount) }
+})
+motion.run()
+</code></pre>
+<p>这两种动画的区别在于：常规动画可配置 <code>duration</code>。加/减速度动画不可配置 <code>duration</code> ，只能通过 <code>startSpeed</code> <code>endSpeed</code> 计算出 <code>duration</code></p>
+<p>一般我们用的是常规动画。某些情况下会用到加/减速度动画，比如转盘抽奖。</p>
+<p>转盘抽奖分为三部分</p>
+<pre><code class="lang-markdown"><span class="hljs-bullet">1. </span>加速旋转
+<span class="hljs-bullet">2. </span>匀速运动旋转 （AJAX 获取抽奖结果）
+<span class="hljs-bullet">3. </span>减速旋转
+</code></pre>
+<p>持续匀速旋转需要用到</p>
+<pre><code class="lang-js">
+<span class="hljs-keyword">var</span> motion = <span class="hljs-keyword">new</span> MotionLogic({
+    <span class="hljs-attr">value</span>: <span class="hljs-built_in">Number</span>.MAX_SAFE_INTEGER,
+    <span class="hljs-comment">// 每毫秒运动 0.36</span>
+    startSpeed: <span class="hljs-number">0.1</span>,
+    <span class="hljs-attr">endSpeed</span>: <span class="hljs-number">0.1</span>,
+    <span class="hljs-attr">onAction</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onAction</span> (<span class="hljs-params">mount</span>) </span>{ <span class="hljs-built_in">console</span>.log(mount) }
+})
+motion.run()
+</code></pre>
+<hr>
+<pre><code class="lang-js">{
+    <span class="hljs-attribute">duration</span>: <span class="hljs-number">1000</span>,
+    value: <span class="hljs-number">360</span>
+}
+</code></pre>
+<p><code>motion</code> 会根据 <code>duration</code> <code>value</code> 自动计算出速度，<code>1000/360 = 2.7</code> 每毫秒运动 <code>2.7</code></p></div>
+</div>
+</div>
+</div>
+<script>
+Array.from(document.querySelectorAll('.face-one-nav-item-label')).forEach(function (node) {
+    if (node.href) {
+        var pathname = node.href.replace(/\?.*/, '')
+        if (pathname === location.origin + location.pathname + location.hash) {
+            node.setAttribute('class', node.getAttribute('class') + ' ' + 'face-one-nav-item-label--on')
+        }
+    }
+})
+var faceOneGetParent = function faceOneGetParent (el, className) {
+   if (el.parentNode.nodeName.toLowerCase() === 'html') {
+       return null
+   }
+   var parentClassName = el.parentNode.getAttribute('class')
+   var classNames = ''
+   if (parentClassName) {
+       classNames = parentClassName.split(' ')
+   }
+   if (classNames.indexOf(className) !== -1) {
+       return el.parentNode
+   }
+   else {
+       return faceOneGetParent(el.parentNode, className)
+   }
+}
+Array.from(document.querySelectorAll('.face-one-nav-item-group-item')).forEach(function (node) {
+    addAvativeClass(node)
+    function addAvativeClass (node)  {
+        if (node.href) {
+            var pathname = node.href.replace(/\?.*/, '')
+            if (pathname === location.origin + location.pathname + location.hash) {
+                node.setAttribute('class', node.getAttribute('class') + ' ' + 'face-one-nav-item-group-item--on')
+                var parentNode = faceOneGetParent(node, 'face-one-nav-item--group')
+                if (parentNode) {
+                    parentNode.setAttribute('class', parentNode.getAttribute('class') + ' ' + 'face-one-nav-item--group-on')
+                }
+            }
+        }
+    }
+
+})
+</script>
+<div class="face-one-foot">
+    <div class="face-one-foot-F-inner">
+        <div class="face-one-foot-group">
+            <div class="face-one-foot-group-title">
+                <span class="face-one-foot-group-title-icon fi fi-github"></span>
+                Github
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://github.com/onface/motion-logic" class="face-one-foot-group-item-link">motion-logic</a>
+                - 项目源码
+            </div>
+        </div>
+        <div class="face-one-foot-group">
+            <div class="face-one-foot-group-title">
+                <span class="face-one-foot-group-title-icon fi fi-link"></span>
+                相关站点
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://github.com/onface/module" class="face-one-foot-group-item-link">module</a>
+                - 开源项目脚手架
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="http://onface.cc/" class="face-one-foot-group-item-link">onface.cc</a>
+                - 资源集合
+            </div>
+        </div>
+        <div class="face-one-foot-group">
+            <div class="face-one-foot-group-title">
+                <span class="face-one-foot-group-title-icon fi fi-users"></span>
+                社区
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://github.com/onface/motion-logic/issues" class="face-one-foot-group-item-link">Github issues</a>
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://github.com/onface/motion-logic/issues/new" class="face-one-foot-group-item-link">提交bug</a>
+            </div>
+        </div>
+        <div class="face-one-foot-copyright">
+            <a href="../index.html" class="face-one-foot-copyright-title">
+                <img src="theme/media/logo.svg" class="face-one-foot-copyright-title-logo" />
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="theme/jquery.js"></script>
+<script>delete window.$</script>
+<script src="theme/face/face.js" ></script>
+</body>
+</html>
