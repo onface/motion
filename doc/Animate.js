@@ -7,7 +7,9 @@ class Demo extends Component {
         self.state = {
             x:0,
             y: 0,
-            deg: 0
+            deg: 0,
+            rgb: [148,166,255],
+            targetRgb: [255,226,19]
         }
     }
     render() {
@@ -17,7 +19,7 @@ class Demo extends Component {
                 <div style={{
                     width: 100,
                     height: 100,
-                    background: 'skyblue',
+                    background: `rgb(${self.state.rgb.map(function(value){ return parseInt(value)}).join(',')})`,
                     position: 'relative',
                     left: self.state.x,
                     top: self.state.y,
@@ -58,6 +60,34 @@ class Demo extends Component {
                             }
                         })
                         animateDeg.run()
+                        new MotionLogic({
+                            value: self.state.targetRgb[0] - self.state.rgb[0],
+                            duration: 500,
+                            onAction: function (mount) {
+                                let state = self.state
+                                state.rgb[0] = state.rgb[0] + mount
+                                self.setState(state)
+                            }
+                        }).run()
+                        new MotionLogic({
+                            value: self.state.targetRgb[1] - self.state.rgb[1],
+                            duration: 500,
+                            onAction: function (mount) {
+                                let state = self.state
+                                state.rgb[1] = state.rgb[1] + mount
+                                self.setState(state)
+                            }
+                        }).run()
+                        new MotionLogic({
+                            value: self.state.targetRgb[2] - self.state.rgb[2],
+                            duration: 500,
+                            onAction: function (mount) {
+                                let state = self.state
+                                state.rgb[2] = state.rgb[2] + mount
+                                self.setState(state)
+                            }
+                        }).run()
+
                     }}
                 >animate</button>
             </div>
