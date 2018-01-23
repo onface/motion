@@ -60,12 +60,12 @@
 /******/ 	__webpack_require__.p = "/motion-logic/0.2.0";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./doc/Basic.demo.js":
+/***/ "./doc/Animate.demo.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75,17 +75,17 @@ var _reactDom = __webpack_require__("./node_modules/react-dom/index.js");
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _Basic = __webpack_require__("./doc/Basic.js");
+var _Animate = __webpack_require__("./doc/Animate.js");
 
-var _Basic2 = _interopRequireDefault(_Basic);
+var _Animate2 = _interopRequireDefault(_Animate);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(__webpack_require__("./node_modules/react/index.js").createElement(_Basic2.default, null), document.getElementById('basic-demo'));
+_reactDom2.default.render(__webpack_require__("./node_modules/react/index.js").createElement(_Animate2.default, null), document.getElementById('animate-demo'));
 
 /***/ }),
 
-/***/ "./doc/Basic.js":
+/***/ "./doc/Animate.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -113,232 +113,90 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Basic = function (_Component) {
-    _inherits(Basic, _Component);
+var Demo = function (_Component) {
+    _inherits(Demo, _Component);
 
-    function Basic(props) {
-        _classCallCheck(this, Basic);
+    function Demo(props) {
+        _classCallCheck(this, Demo);
 
-        var _this = _possibleConstructorReturn(this, (Basic.__proto__ || Object.getPrototypeOf(Basic)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).call(this, props));
 
         var self = _this;
         self.state = {
-            offset: 0
+            x: 0,
+            y: 0,
+            deg: 0
         };
         return _this;
     }
 
-    _createClass(Basic, [{
+    _createClass(Demo, [{
         key: "render",
         value: function render() {
             var self = this;
             return __webpack_require__("./node_modules/react/index.js").createElement(
                 "div",
                 null,
-                __webpack_require__("./node_modules/react/index.js").createElement(
-                    "div",
-                    { style: {
-                            width: 100,
-                            height: 100,
-                            overflow: 'hidden'
-                        } },
-                    __webpack_require__("./node_modules/react/index.js").createElement("div", { style: {
-                            width: 100,
-                            marginTop: 50,
-                            height: 0,
-                            overflow: 'hidden',
-                            borderTop: '1px solid blue',
-                            borderLeft: ' 10px solid red',
-                            transform: 'rotate(' + self.state.offset % 360 + 'deg) translate3d(0,0,0)'
-                        } })
-                ),
-                __webpack_require__("./node_modules/react/index.js").createElement("hr", null),
-                __webpack_require__("./node_modules/react/index.js").createElement("div", {
-                    style: {
+                __webpack_require__("./node_modules/react/index.js").createElement("div", { style: {
                         width: 100,
                         height: 100,
                         background: 'skyblue',
-                        marginLeft: self.state.offset
-                    }
-                }),
+                        position: 'relative',
+                        left: self.state.x,
+                        top: self.state.y,
+                        transform: 'rotate(' + self.state.deg % 360 + 'deg) translate3d(0,0,0)'
+                    } }),
                 __webpack_require__("./node_modules/react/index.js").createElement(
                     "button",
                     {
                         onClick: function onClick() {
-                            var motion = new _motionLogic2.default({
-                                value: 180,
-                                duration: 1000,
-                                onAction: function onAction(mount) {
-                                    var offset = self.state.offset;
-                                    self.setState({
-                                        offset: offset + mount
-                                    });
-                                }
-                            });
-                            motion.run();
-                        }
-                    },
-                    "linear"
-                ),
-                __webpack_require__("./node_modules/react/index.js").createElement(
-                    "button",
-                    {
-                        onClick: function onClick() {
-                            var motion = new _motionLogic2.default({
+                            var animateX = new _motionLogic2.default({
+                                value: 100,
+                                duration: 500,
                                 effect: 'easeOutElastic',
-                                value: 180,
-                                duration: 1000,
                                 onAction: function onAction(mount) {
-                                    var offset = self.state.offset;
                                     self.setState({
-                                        offset: offset + mount
+                                        x: self.state.x + mount
                                     });
                                 }
                             });
-                            motion.run();
-                        }
-                    },
-                    "easeOutElastic"
-                ),
-                __webpack_require__("./node_modules/react/index.js").createElement(
-                    "button",
-                    {
-                        onClick: function onClick() {
-                            var motion = new _motionLogic2.default({
-                                effect: function easeInOutBounce(t, b, c, d) {
-                                    if (t < d / 2) return this.easeInBounce(t * 2, 0, c, d) * .5 + b;
-                                    return this.easeOutBounce(t * 2 - d, 0, c, d) * .5 + c * .5 + b;
-                                },
-                                value: 180,
-                                duration: 1000,
+                            animateX.run();
+                            var animateY = new _motionLogic2.default({
+                                value: -30,
+                                duration: 500,
+                                effect: 'easeOutElastic',
                                 onAction: function onAction(mount) {
-                                    var offset = self.state.offset;
                                     self.setState({
-                                        offset: offset + mount
+                                        y: self.state.y + mount
                                     });
                                 }
                             });
-                            motion.run();
-                        }
-                    },
-                    "function"
-                ),
-                __webpack_require__("./node_modules/react/index.js").createElement(
-                    "button",
-                    {
-                        onClick: function onClick() {
-                            var motion = new _motionLogic2.default({
-                                value: 180,
-                                startSpeed: 0.1,
-                                endSpeed: 0,
-                                onAction: function onAction(mount) {
-                                    var offset = self.state.offset;
-                                    self.setState({
-                                        offset: offset + mount
-                                    });
-                                }
-                            });
-                            motion.run();
-                        }
-                    },
-                    "speed"
-                ),
-                __webpack_require__("./node_modules/react/index.js").createElement(
-                    "button",
-                    {
-                        onClick: function onClick() {
-                            var motion = new _motionLogic2.default({
-                                value: Number.MAX_SAFE_INTEGER,
-                                startSpeed: 0.1,
-                                endSpeed: 0.1,
-                                onAction: function onAction(mount) {
-                                    var offset = self.state.offset;
-                                    self.setState({
-                                        offset: offset + mount
-                                    });
-                                },
-                                onStop: function onStop() {
-                                    console.log('stop');
-                                }
-                            });
-                            motion.run();
-                            setTimeout(function () {
-                                motion.stop();
-                            }, 1000);
-                        }
-                    },
-                    "keep runing 1000ms"
-                ),
-                __webpack_require__("./node_modules/react/index.js").createElement(
-                    "button",
-                    {
-                        onClick: function onClick() {
-                            var speedUp, uniform, slowDown;
-                            speedUp = new _motionLogic2.default({
+                            animateY.run();
+                            var animateDeg = new _motionLogic2.default({
                                 value: 360,
-                                startSpeed: 0,
-                                endSpeed: 0.5,
+                                duration: 500,
+                                effect: 'easeOutElastic',
                                 onAction: function onAction(mount) {
-                                    var offset = self.state.offset;
                                     self.setState({
-                                        offset: offset + mount
-                                    });
-                                },
-                                onDone: function onDone() {
-                                    uniform.run();
-                                    setTimeout(function () {
-                                        uniform.stop();
-                                        var target = 90;
-                                        // target = 360 - target // 如果箭头指向右边，则去掉此行注释
-                                        var currentDeg = self.state.offset % 360;
-                                        // 加上 360 * 2 是因为 currentDeg 如果跟 target 很小，会变成快速指向目标
-                                        var mountDeg = 360 * 2 + target - currentDeg;
-                                        var slowDown = new _motionLogic2.default({
-                                            value: mountDeg,
-                                            startSpeed: 0.5,
-                                            endSpeed: 0,
-                                            onAction: function onAction(mount) {
-                                                var offset = self.state.offset;
-                                                self.setState({
-                                                    offset: offset + mount
-                                                });
-                                            },
-                                            onDone: function onDone() {
-                                                console.log('over');
-                                            }
-                                        });
-                                        slowDown.run();
-                                    }, 2000);
-                                }
-                            });
-                            speedUp.run();
-
-                            uniform = new _motionLogic2.default({
-                                value: Number.MAX_SAFE_INTEGER,
-                                startSpeed: 0.5,
-                                endSpeed: 0.5,
-                                onAction: function onAction(mount) {
-                                    var offset = self.state.offset;
-                                    self.setState({
-                                        offset: offset + mount
+                                        deg: self.state.deg + mount
                                     });
                                 }
                             });
+                            animateDeg.run();
                         }
-
                     },
-                    "turntable"
+                    "animate"
                 )
             );
         }
     }]);
 
-    return Basic;
+    return Demo;
 }(_react.Component);
 /*ONFACE-DEL*/
 
-Basic = __webpack_require__("./node_modules/react-hot-loader/lib/index.js").hot(module)(Basic);
-exports.default = Basic;
+Demo = __webpack_require__("./node_modules/react-hot-loader/lib/index.js").hot(module)(Demo);
+exports.default = Demo;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/webpack/buildin/module.js")(module)))
 
 /***/ }),
@@ -1760,10 +1618,10 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ 1:
+/***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("./doc/Basic.demo.js");
+module.exports = __webpack_require__("./doc/Animate.demo.js");
 
 
 /***/ })

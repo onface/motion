@@ -60,10 +60,30 @@
 /******/ 	__webpack_require__.p = "/motion-logic/0.2.0";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./doc/Basic.demo.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _reactDom = __webpack_require__("./node_modules/react-dom/index.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _Basic = __webpack_require__("./doc/Basic.js");
+
+var _Basic2 = _interopRequireDefault(_Basic);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_reactDom2.default.render(__webpack_require__("./node_modules/react/index.js").createElement(_Basic2.default, null), document.getElementById('basic-demo'));
+
+/***/ }),
 
 /***/ "./doc/Basic.js":
 /***/ (function(module, exports, __webpack_require__) {
@@ -315,30 +335,11 @@ var Basic = function (_Component) {
 
     return Basic;
 }(_react.Component);
+/*ONFACE-DEL*/
 
 Basic = __webpack_require__("./node_modules/react-hot-loader/lib/index.js").hot(module)(Basic);
 exports.default = Basic;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/webpack/buildin/module.js")(module)))
-
-/***/ }),
-
-/***/ "./doc/basic.demo.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _reactDom = __webpack_require__("./node_modules/react-dom/index.js");
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _Basic = __webpack_require__("./doc/Basic.js");
-
-var _Basic2 = _interopRequireDefault(_Basic);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-_reactDom2.default.render(__webpack_require__("./node_modules/react/index.js").createElement(_Basic2.default, null), document.getElementById('basic-demo'));
 
 /***/ }),
 
@@ -1759,10 +1760,10 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ 0:
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("./doc/basic.demo.js");
+module.exports = __webpack_require__("./doc/Basic.demo.js");
 
 
 /***/ })
