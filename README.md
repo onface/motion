@@ -1,17 +1,17 @@
-# motion-logic
+# face-motion
 
 <!--MR-D{tpl: 'home'}-->
 
 <div class="face-one-intro">
-    <div class="face-one-intro-title">motion-logic</div>
+    <div class="face-one-intro-title">face-motion</div>
     <h2 class="face-one-intro-desc">
         动画逻辑封装，提供动画底层实现
     </h2>
     <div class="face-one-intro-tool">
-        <a href="https://onface.github.io/motion-logic" class="face-one-intro-btn face-one-intro-btn--primary mr-online-hide" >在线文档</a>
+        <a href="https://onface.github.io/motion" class="face-one-intro-btn face-one-intro-btn--primary mr-online-hide" >在线文档</a>
         <!-- MARKRUN-HTML
         <a href="./doc/intro.md" class="face-one-intro-btn face-one-intro-btn--primary">指引</a>
-        <a href="http://github.com/onface/motion-logic" class="face-one-intro-btn">GITHUB</a>
+        <a href="http://github.com/onface/motion" class="face-one-intro-btn">GITHUB</a>
         -->
     </div>
 </div>

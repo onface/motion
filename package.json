@@ -1,5 +1,5 @@
 {
-    "name": "motion-logic",
+    "name": "face-motion",
     "main": "lib/index.js",
     "version": "0.3.0",
     "keywords": "",
@@ -15,7 +15,7 @@
         "test:ci": "./node_modules/karma/bin/karma start ./compile/karma.ci.js"
     },
     "$username": "onface",
-    "$repository": "motion-logic",
+    "$repository": "face-motion",
     "dependencies": {
         "extend": "^3.0.1"
     },
