@@ -1,5 +1,5 @@
 import React , { Component } from "react"
-import MotionLogic from "motion-logic"
+import Motion from "face-motion"
 
 
 
@@ -42,7 +42,7 @@ class Basic extends Component {
                 ></div>
                 <button
                     onClick={function () {
-                        var motion = new MotionLogic({
+                        var motion = new Motion({
                             value: 180,
                             duration: 1000,
                             onAction: function (mount) {
@@ -60,7 +60,7 @@ class Basic extends Component {
 
                 <button
                     onClick={function () {
-                        var motion = new MotionLogic({
+                        var motion = new Motion({
                             effect: 'easeOutElastic',
                             value: 180,
                             duration: 1000,
@@ -79,7 +79,7 @@ class Basic extends Component {
 
                 <button
                     onClick={function () {
-                        var motion = new MotionLogic({
+                        var motion = new Motion({
                             effect: function easeInOutBounce (t, b, c, d) {
                         		if (t < d/2) return this.easeInBounce (t*2, 0, c, d) * .5 + b;
                         		return this.easeOutBounce (t*2-d, 0, c, d) * .5 + c*.5 + b;
@@ -101,7 +101,7 @@ class Basic extends Component {
 
                 <button
                     onClick={function () {
-                        var motion = new MotionLogic({
+                        var motion = new Motion({
                             value: 180,
                             startSpeed: 0.1,
                             endSpeed: 0,
@@ -119,7 +119,7 @@ class Basic extends Component {
                 </button>
                 <button
                     onClick={function () {
-                        var motion = new MotionLogic({
+                        var motion = new Motion({
                             value: Number.MAX_SAFE_INTEGER,
                             startSpeed: 0.1,
                             endSpeed: 0.1,
@@ -144,7 +144,7 @@ class Basic extends Component {
                 <button
                     onClick={function () {
                         var speedUp, uniform, slowDown
-                        speedUp = new MotionLogic({
+                        speedUp = new Motion({
                             value: 360,
                             startSpeed: 0,
                             endSpeed: 0.5,
@@ -163,7 +163,7 @@ class Basic extends Component {
                                     var currentDeg = self.state.offset % 360
                                     // 加上 360 * 2 是因为 currentDeg 如果跟 target 很小，会变成快速指向目标
                                     var mountDeg = 360 * 2 + target - currentDeg
-                                    var slowDown = new MotionLogic({
+                                    var slowDown = new Motion({
                                         value: mountDeg,
                                         startSpeed: 0.5,
                                         endSpeed: 0,
@@ -183,7 +183,7 @@ class Basic extends Component {
                         })
                         speedUp.run()
 
-                        uniform = new MotionLogic({
+                        uniform = new Motion({
                             value: Number.MAX_SAFE_INTEGER,
                             startSpeed: 0.5,
                             endSpeed: 0.5,

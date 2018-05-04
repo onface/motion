@@ -27,14 +27,14 @@ class MotionLogic {
             case 'string':
                 self.effect = easingMap[self.settings.effect]
                 if (typeof self.effect === 'undefined') {
-                    throw new Error('motion-logic: settings.effect(' + self.settings.effect + ') not found!')
+                    throw new Error('face-motion: settings.effect(' + self.settings.effect + ') not found!')
                 }
             break
             case 'function':
                 self.effect = self.settings.effect
             break
             default:
-                throw new Error('motion-logic: settings.effect must be a string or a function!')
+                throw new Error('face-motion: settings.effect must be a string or a function!')
         }
     }
 }

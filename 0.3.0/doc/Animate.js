@@ -1,5 +1,5 @@
 import React , { Component } from "react"
-import MotionLogic from "motion-logic"
+import Motion from "face-motion"
 class Demo extends Component {
     constructor (props) {
         super(props)
@@ -29,12 +29,12 @@ class Demo extends Component {
                 }} ></div>
                 <button
                     onClick={function () {
-                        var motion = MotionLogic.animate({
+                        var motion = Motion.animate({
                             duration: 500,
                             effect: 'easeOutElastic',
                             onAction: function (mountData) {
                                 self.setState(
-                                    MotionLogic.mount(
+                                    Motion.mount(
                                         self.state,
                                         mountData
                                     )

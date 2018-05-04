@@ -57,7 +57,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/motion-logic/0.3.0";
+/******/ 	__webpack_require__.p = "/face-motion/0.3.0";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 0);
@@ -101,9 +101,9 @@ var _react = __webpack_require__("./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _motionLogic = __webpack_require__("./lib/index.js");
+var _faceMotion = __webpack_require__("./lib/index.js");
 
-var _motionLogic2 = _interopRequireDefault(_motionLogic);
+var _faceMotion2 = _interopRequireDefault(_faceMotion);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -154,11 +154,11 @@ var Demo = function (_Component) {
                     "button",
                     {
                         onClick: function onClick() {
-                            var motion = _motionLogic2.default.animate({
+                            var motion = _faceMotion2.default.animate({
                                 duration: 500,
                                 effect: 'easeOutElastic',
                                 onAction: function onAction(mountData) {
-                                    self.setState(_motionLogic2.default.mount(self.state, mountData));
+                                    self.setState(_faceMotion2.default.mount(self.state, mountData));
                                 },
                                 value: {
                                     x: {
@@ -508,14 +508,14 @@ var MotionLogic = (_temp = _class = function MotionLogic(settings) {
         case 'string':
             self.effect = _easing2.default[self.settings.effect];
             if (typeof self.effect === 'undefined') {
-                throw new Error('motion-logic: settings.effect(' + self.settings.effect + ') not found!');
+                throw new Error('face-motion: settings.effect(' + self.settings.effect + ') not found!');
             }
             break;
         case 'function':
             self.effect = self.settings.effect;
             break;
         default:
-            throw new Error('motion-logic: settings.effect must be a string or a function!');
+            throw new Error('face-motion: settings.effect must be a string or a function!');
     }
 }, _class.animate = _animate2.default, _class.easing = _easing2.default, _class.mount = _mount2.default, _temp);
 

@@ -13,7 +13,7 @@
 <div class="face-one-head">
     <a class="face-one-head-logo" href="../index.html">
         <img src="theme/media/logo.svg" alt="" class="face-one-head-logo-photo" />
-        face
+        face-motion
     </a>
     <span class="face-one-head-slogan">
         Write less code, do more things!
@@ -91,7 +91,7 @@
                                 <span class="face-one-code-source-tool-copy fi fi-files-o"></span>
                             </div>
                             <pre><code class="lang-js">import React , { Component } from <span class="hljs-string">"react"</span>
-import MotionLogic from <span class="hljs-string">"motion-logic"</span>
+import Motion from <span class="hljs-string">"face-motion"</span>
 
 
 
@@ -134,7 +134,7 @@ import MotionLogic from <span class="hljs-string">"motion-logic"</span>
                 &gt;&lt;/div&gt;
                 &lt;button
                     onClick={<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-                        <span class="hljs-keyword">var</span> motion = <span class="hljs-keyword">new</span> MotionLogic({
+                        <span class="hljs-keyword">var</span> motion = <span class="hljs-keyword">new</span> Motion({
                             value: <span class="hljs-number">180</span>,
                             duration: <span class="hljs-number">1000</span>,
                             onAction: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(mount)</span> </span>{
@@ -152,7 +152,7 @@ import MotionLogic from <span class="hljs-string">"motion-logic"</span>
 
                 &lt;button
                     onClick={<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-                        <span class="hljs-keyword">var</span> motion = <span class="hljs-keyword">new</span> MotionLogic({
+                        <span class="hljs-keyword">var</span> motion = <span class="hljs-keyword">new</span> Motion({
                             effect: <span class="hljs-string">'easeOutElastic'</span>,
                             value: <span class="hljs-number">180</span>,
                             duration: <span class="hljs-number">1000</span>,
@@ -171,7 +171,7 @@ import MotionLogic from <span class="hljs-string">"motion-logic"</span>
 
                 &lt;button
                     onClick={<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-                        <span class="hljs-keyword">var</span> motion = <span class="hljs-keyword">new</span> MotionLogic({
+                        <span class="hljs-keyword">var</span> motion = <span class="hljs-keyword">new</span> Motion({
                             effect: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">easeInOutBounce</span> <span class="hljs-params">(t, b, c, d)</span> </span>{
                                 <span class="hljs-keyword">if</span> (t &lt; d/<span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> this.easeInBounce (t*<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, c, d) * <span class="hljs-number">.5</span> + b;
                                 <span class="hljs-keyword">return</span> this.easeOutBounce (t*<span class="hljs-number">2</span>-d, <span class="hljs-number">0</span>, c, d) * <span class="hljs-number">.5</span> + c*<span class="hljs-number">.5</span> + b;
@@ -193,7 +193,7 @@ import MotionLogic from <span class="hljs-string">"motion-logic"</span>
 
                 &lt;<span class="hljs-title">button</span>
                     <span class="hljs-title">onClick</span>=</span>{<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-                        <span class="hljs-keyword">var</span> motion = <span class="hljs-keyword">new</span> MotionLogic({
+                        <span class="hljs-keyword">var</span> motion = <span class="hljs-keyword">new</span> Motion({
                             value: <span class="hljs-number">180</span>,
                             startSpeed: <span class="hljs-number">0.1</span>,
                             endSpeed: <span class="hljs-number">0</span>,
@@ -211,7 +211,7 @@ import MotionLogic from <span class="hljs-string">"motion-logic"</span>
                 &lt;/button&gt;
                 &lt;button
                     onClick={<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-                        <span class="hljs-keyword">var</span> motion = <span class="hljs-keyword">new</span> MotionLogic({
+                        <span class="hljs-keyword">var</span> motion = <span class="hljs-keyword">new</span> Motion({
                             value: Number.MAX_SAFE_INTEGER,
                             startSpeed: <span class="hljs-number">0.1</span>,
                             endSpeed: <span class="hljs-number">0.1</span>,
@@ -236,7 +236,7 @@ import MotionLogic from <span class="hljs-string">"motion-logic"</span>
                 &lt;button
                     onClick={<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
                         <span class="hljs-keyword">var</span> speedUp, uniform, slowDown
-                        speedUp = <span class="hljs-keyword">new</span> MotionLogic({
+                        speedUp = <span class="hljs-keyword">new</span> Motion({
                             value: <span class="hljs-number">360</span>,
                             startSpeed: <span class="hljs-number">0</span>,
                             endSpeed: <span class="hljs-number">0.5</span>,
@@ -255,7 +255,7 @@ import MotionLogic from <span class="hljs-string">"motion-logic"</span>
                                     <span class="hljs-keyword">var</span> currentDeg = <span class="hljs-keyword">self</span>.state.offset % <span class="hljs-number">360</span>
                                     <span class="hljs-comment">// 加上 360 * 2 是因为 currentDeg 如果跟 target 很小，会变成快速指向目标</span>
                                     <span class="hljs-keyword">var</span> mountDeg = <span class="hljs-number">360</span> * <span class="hljs-number">2</span> + target - currentDeg
-                                    <span class="hljs-keyword">var</span> slowDown = <span class="hljs-keyword">new</span> MotionLogic({
+                                    <span class="hljs-keyword">var</span> slowDown = <span class="hljs-keyword">new</span> Motion({
                                         value: mountDeg,
                                         startSpeed: <span class="hljs-number">0.5</span>,
                                         endSpeed: <span class="hljs-number">0</span>,
@@ -275,7 +275,7 @@ import MotionLogic from <span class="hljs-string">"motion-logic"</span>
                         })
                         speedUp.run()
 
-                        uniform = <span class="hljs-keyword">new</span> MotionLogic({
+                        uniform = <span class="hljs-keyword">new</span> Motion({
                             value: Number.MAX_SAFE_INTEGER,
                             startSpeed: <span class="hljs-number">0.5</span>,
                             endSpeed: <span class="hljs-number">0.5</span>,
@@ -321,7 +321,7 @@ export <span class="hljs-keyword">default</span> Basic
                                 <span class="face-one-code-source-tool-copy fi fi-files-o"></span>
                             </div>
                             <pre><code class="lang-js">import React , { Component } from <span class="hljs-string">"react"</span>
-import MotionLogic from <span class="hljs-string">"motion-logic"</span>
+import Motion from <span class="hljs-string">"face-motion"</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
     constructor (props) {
         super(props)
@@ -351,12 +351,12 @@ import MotionLogic from <span class="hljs-string">"motion-logic"</span>
                 }} &gt;&lt;/div&gt;
                 &lt;button
                     onClick={<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-                        <span class="hljs-keyword">var</span> motion = MotionLogic.animate({
+                        <span class="hljs-keyword">var</span> motion = Motion.animate({
                             duration: <span class="hljs-number">500</span>,
                             effect: <span class="hljs-string">'easeOutElastic'</span>,
                             onAction: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(mountData)</span> </span>{
                                 <span class="hljs-keyword">self</span>.setState(
-                                    MotionLogic.mount(
+                                    Motion.mount(
                                         <span class="hljs-keyword">self</span>.state,
                                         mountData
                                     )
@@ -454,7 +454,7 @@ Array.from(document.querySelectorAll('.face-one-nav-item-group-item')).forEach(f
                 Github
             </div>
             <div class="face-one-foot-group-item">
-                <a href="https://github.com/onface/motion-logic" class="face-one-foot-group-item-link">motion-logic</a>
+                <a href="https://github.com/onface/face-motion" class="face-one-foot-group-item-link">face-motion</a>
                 - 项目源码
             </div>
         </div>
@@ -478,10 +478,10 @@ Array.from(document.querySelectorAll('.face-one-nav-item-group-item')).forEach(f
                 社区
             </div>
             <div class="face-one-foot-group-item">
-                <a href="https://github.com/onface/motion-logic/issues" class="face-one-foot-group-item-link">Github issues</a>
+                <a href="https://github.com/onface/face-motion/issues" class="face-one-foot-group-item-link">Github issues</a>
             </div>
             <div class="face-one-foot-group-item">
-                <a href="https://github.com/onface/motion-logic/issues/new" class="face-one-foot-group-item-link">提交bug</a>
+                <a href="https://github.com/onface/face-motion/issues/new" class="face-one-foot-group-item-link">提交bug</a>
             </div>
         </div>
         <div class="face-one-foot-copyright">

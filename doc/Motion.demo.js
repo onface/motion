@@ -57,7 +57,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/motion-logic/0.3.0";
+/******/ 	__webpack_require__.p = "/face-motion/0.3.0";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 1);
@@ -101,9 +101,9 @@ var _react = __webpack_require__("./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _motionLogic = __webpack_require__("./lib/index.js");
+var _faceMotion = __webpack_require__("./lib/index.js");
 
-var _motionLogic2 = _interopRequireDefault(_motionLogic);
+var _faceMotion2 = _interopRequireDefault(_faceMotion);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -165,7 +165,7 @@ var Basic = function (_Component) {
                     "button",
                     {
                         onClick: function onClick() {
-                            var motion = new _motionLogic2.default({
+                            var motion = new _faceMotion2.default({
                                 value: 180,
                                 duration: 1000,
                                 onAction: function onAction(mount) {
@@ -184,7 +184,7 @@ var Basic = function (_Component) {
                     "button",
                     {
                         onClick: function onClick() {
-                            var motion = new _motionLogic2.default({
+                            var motion = new _faceMotion2.default({
                                 effect: 'easeOutElastic',
                                 value: 180,
                                 duration: 1000,
@@ -204,7 +204,7 @@ var Basic = function (_Component) {
                     "button",
                     {
                         onClick: function onClick() {
-                            var motion = new _motionLogic2.default({
+                            var motion = new _faceMotion2.default({
                                 effect: function easeInOutBounce(t, b, c, d) {
                                     if (t < d / 2) return this.easeInBounce(t * 2, 0, c, d) * .5 + b;
                                     return this.easeOutBounce(t * 2 - d, 0, c, d) * .5 + c * .5 + b;
@@ -227,7 +227,7 @@ var Basic = function (_Component) {
                     "button",
                     {
                         onClick: function onClick() {
-                            var motion = new _motionLogic2.default({
+                            var motion = new _faceMotion2.default({
                                 value: 180,
                                 startSpeed: 0.1,
                                 endSpeed: 0,
@@ -247,7 +247,7 @@ var Basic = function (_Component) {
                     "button",
                     {
                         onClick: function onClick() {
-                            var motion = new _motionLogic2.default({
+                            var motion = new _faceMotion2.default({
                                 value: Number.MAX_SAFE_INTEGER,
                                 startSpeed: 0.1,
                                 endSpeed: 0.1,
@@ -274,7 +274,7 @@ var Basic = function (_Component) {
                     {
                         onClick: function onClick() {
                             var speedUp, uniform, slowDown;
-                            speedUp = new _motionLogic2.default({
+                            speedUp = new _faceMotion2.default({
                                 value: 360,
                                 startSpeed: 0,
                                 endSpeed: 0.5,
@@ -293,7 +293,7 @@ var Basic = function (_Component) {
                                         var currentDeg = self.state.offset % 360;
                                         // 加上 360 * 2 是因为 currentDeg 如果跟 target 很小，会变成快速指向目标
                                         var mountDeg = 360 * 2 + target - currentDeg;
-                                        var slowDown = new _motionLogic2.default({
+                                        var slowDown = new _faceMotion2.default({
                                             value: mountDeg,
                                             startSpeed: 0.5,
                                             endSpeed: 0,
@@ -313,7 +313,7 @@ var Basic = function (_Component) {
                             });
                             speedUp.run();
 
-                            uniform = new _motionLogic2.default({
+                            uniform = new _faceMotion2.default({
                                 value: Number.MAX_SAFE_INTEGER,
                                 startSpeed: 0.5,
                                 endSpeed: 0.5,
@@ -646,14 +646,14 @@ var MotionLogic = (_temp = _class = function MotionLogic(settings) {
         case 'string':
             self.effect = _easing2.default[self.settings.effect];
             if (typeof self.effect === 'undefined') {
-                throw new Error('motion-logic: settings.effect(' + self.settings.effect + ') not found!');
+                throw new Error('face-motion: settings.effect(' + self.settings.effect + ') not found!');
             }
             break;
         case 'function':
             self.effect = self.settings.effect;
             break;
         default:
-            throw new Error('motion-logic: settings.effect must be a string or a function!');
+            throw new Error('face-motion: settings.effect must be a string or a function!');
     }
 }, _class.animate = _animate2.default, _class.easing = _easing2.default, _class.mount = _mount2.default, _temp);
 
