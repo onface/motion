@@ -57,7 +57,23 @@ class Basic extends Component {
                 >
                     linear
                 </button>
-
+                <button
+                    onClick={function () {
+                        var motion = new Motion({
+                            value: -180,
+                            duration: 1000,
+                            onAction: function (mount) {
+                                var offset = self.state.offset
+                                self.setState({
+                                    offset: offset + mount
+                                })
+                            }
+                        })
+                        motion.run()
+                    }}
+                >
+                    minus
+                </button>
                 <button
                     onClick={function () {
                         var motion = new Motion({
@@ -98,7 +114,6 @@ class Basic extends Component {
                 >
                     function
                 </button>
-
                 <button
                     onClick={function () {
                         var motion = new Motion({
@@ -115,7 +130,25 @@ class Basic extends Component {
                         motion.run()
                     }}
                 >
-                    speed
+                    speed&value
+                </button>
+                <button
+                    onClick={function () {
+                        var motion = new Motion({
+                            duration: 3600,
+                            startSpeed: 0.1,
+                            endSpeed: 0,
+                            onAction: function (mount) {
+                                var offset = self.state.offset
+                                self.setState({
+                                    offset: offset + mount
+                                })
+                            }
+                        })
+                        motion.run()
+                    }}
+                >
+                    speed&duration
                 </button>
                 <button
                     onClick={function () {
