@@ -29,7 +29,7 @@ class Demo extends Component {
                 }} ></div>
                 <button
                     onClick={function () {
-                        var motion = Motion.animate({
+                        var motion = Motion.Animate({
                             duration: 500,
                             effect: 'easeOutElastic',
                             onAction: function (mountData) {
@@ -65,7 +65,10 @@ class Demo extends Component {
                                 },
                             }
                         })
-                        motion.run()
+                        /*
+                        var motion = new Motion.Animate({run:false})
+                        motion.run
+                        */
                         console.log('motion', motion)
                     }}
                 >animate</button>

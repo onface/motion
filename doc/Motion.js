@@ -15,6 +15,7 @@ class Basic extends Component {
         const self = this
         return (
             <div>
+                (speed: {self.state.speed    })
                 <div style={{
                     width: 100,
                     height: 100,
@@ -52,7 +53,6 @@ class Basic extends Component {
                                 })
                             }
                         })
-                        motion.run()
                     }}
                 >
                     linear
@@ -69,7 +69,6 @@ class Basic extends Component {
                                 })
                             }
                         })
-                        motion.run()
                     }}
                 >
                     minus
@@ -87,7 +86,6 @@ class Basic extends Component {
                                 })
                             }
                         })
-                        motion.run()
                     }}
                 >
                     easeOutElastic
@@ -109,7 +107,6 @@ class Basic extends Component {
                                 })
                             }
                         })
-                        motion.run()
                     }}
                 >
                     function
@@ -120,14 +117,14 @@ class Basic extends Component {
                             value: 180,
                             startSpeed: 0.1,
                             endSpeed: 0,
-                            onAction: function (mount) {
+                            onAction: function (mount, speed) {
                                 var offset = self.state.offset
                                 self.setState({
-                                    offset: offset + mount
+                                    offset: offset + mount,
+                                    speed: speed
                                 })
                             }
                         })
-                        motion.run()
                     }}
                 >
                     speed&value
@@ -138,14 +135,14 @@ class Basic extends Component {
                             duration: 3600,
                             startSpeed: 0.1,
                             endSpeed: 0,
-                            onAction: function (mount) {
+                            onAction: function (mount, speed) {
                                 var offset = self.state.offset
                                 self.setState({
-                                    offset: offset + mount
+                                    offset: offset + mount,
+                                    speed: speed
                                 })
                             }
                         })
-                        motion.run()
                     }}
                 >
                     speed&duration
@@ -166,7 +163,6 @@ class Basic extends Component {
                                 console.log('stop')
                             }
                         })
-                        motion.run()
                         setTimeout(function () {
                             motion.stop()
                         }, 1000)
@@ -214,9 +210,9 @@ class Basic extends Component {
                                 }, 2000)
                             }
                         })
-                        speedUp.run()
 
                         uniform = new Motion({
+                            run: false,
                             value: Number.MAX_SAFE_INTEGER,
                             startSpeed: 0.5,
                             endSpeed: 0.5,
